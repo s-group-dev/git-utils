@@ -1,0 +1,5 @@
+# Python
+/.venv/
+
+# Editor: vim
+*.sw[op]
