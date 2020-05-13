@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from gutscli.exceptions import GutsException
 import click
 import sys
 
@@ -9,7 +10,7 @@ def cli():
 
 if __name__ == '__main__':
     try:
-        raise Exception("error")
-    except Exception as e:
+        raise GutsException("error")
+    except GutsException as e:
         click.secho(str(e), fg='red')
         sys.exit(1)
