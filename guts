@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from gutscli.branch import cli as branch_command
 from gutscli.exceptions import GutsException
 import click
 import sys
@@ -8,9 +9,11 @@ import sys
 def cli():
     pass
 
+cli.add_command(branch_command)
+
 if __name__ == '__main__':
     try:
-        raise GutsException("error")
+        cli()
     except GutsException as e:
         click.secho(str(e), fg='red')
         sys.exit(1)

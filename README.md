@@ -31,3 +31,5 @@ Project follows coding standards listed below:
 Please run `make ci` before adding new lines to codebase. Please note that runnning `make
 init` also adds it to your git [Git pre-commit
 hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
+
+To skip preliminary linting and tests, do `git commit` with option `-n/--no-verify`.
