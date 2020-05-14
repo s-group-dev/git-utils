@@ -8,4 +8,15 @@ init: ## Initialize project
 	pip3 install -r requirements.txt
 	ln -sf ../../bin/git-pre-commit-hook.sh .git/hooks/pre-commit
 
+linc: ## Lint changed Python files
+	bin/run-lint.sh changed
+
+lint: ## Lint all Python files
+	bin/run-lint.sh
+
+clean: ## Remove all Python combile files
+	find . -name '*.pyc' -not -path './.venv/*' -delete
+
+ci: linc ## Run local ci
+
 # vim: noexpandtab
