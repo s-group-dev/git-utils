@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 git fetch origin --prune &>/dev/null 2>&1
 
-format="%(HEAD) %(refname:short) - %(objectname:short) - %(contents:subject) - %(authorname) (%(committerdate:relative))"
+branch="$1"
+type="$2"
 
-git branch -r --no-merged master --format="${format}" --sort=-committerdate
+test "${type}" == "remote" && options=' -r' || options=''
+
+format="%(HEAD) %(refname:short) - %(objectname:short) - %(contents:subject) - %(authorname) (%(committerdate:relative))"
+git branch ${options}--no-merged "${branch}" --format="${format}" --sort=-committerdate

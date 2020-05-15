@@ -22,10 +22,10 @@ def cli():
               default=False,
               help='Delete merged branches')
 def list_merged(branch, p_type, delete):
-    process = subprocess.run(['scripts/branch-list-merged.sh'],
+    process = subprocess.run(['scripts/branch-list-merged.sh', branch, p_type],
                              stdout=subprocess.PIPE, universal_newlines=True)
-    # TODO -b, -t, -d
-    click.secho(process.stdout.strip())
+    output = process.stdout.strip()
+    click.secho(output)
 
 
 @cli.command('list-wip')
@@ -39,7 +39,6 @@ def list_merged(branch, p_type, delete):
               help='Run against local or remote branches',
               type=click.Choice(['local', 'remote']))
 def list_wip(branch, p_type):
-    process = subprocess.run(['scripts/branch-list-wip.sh'],
+    process = subprocess.run(['scripts/branch-list-wip.sh', branch, p_type],
                              stdout=subprocess.PIPE, universal_newlines=True)
-    # TODO -b, -t
     click.secho(process.stdout.strip())
