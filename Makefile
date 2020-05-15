@@ -25,4 +25,7 @@ clean: ## Remove all Python combile files
 
 ci: linc ## Run local ci
 
+build-dist: ## Create source distribution
+	python3 setup.py sdist
+
 # vim: noexpandtab
