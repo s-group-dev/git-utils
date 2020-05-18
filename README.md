@@ -13,7 +13,7 @@ require obscure magic. Tool documents itself.
 
 See other active commands in `Makefile`.
 
-Please consider adding `guts` if your `$PATH`.
+Please consider adding `guts` in your `$PATH`.
 
 ## Activate virtualenv
 
