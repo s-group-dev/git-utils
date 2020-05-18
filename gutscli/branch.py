@@ -18,20 +18,25 @@ def cli():
               default='local',
               help='Run against local or remote branches',
               type=click.Choice(['local', 'remote']))
+@click.option('-f', '--filter',
+              required=False,
+              default='',
+              help='Filter output (case-insensitive)')
 @click.option('--delete',
               is_flag=True,
               default=False,
               help='Delete merged branches')
-def list_merged(branch, p_type, delete):
+def list_merged(branch, p_type, filter, delete):
     process = subprocess.run([_get_scripts_dir() + '/branch-list.sh',
                               branch,
                               p_type,
-                              'true'],
+                              'true',
+                              filter],
                              stdout=subprocess.PIPE,
                              universal_newlines=True)
     if process.stdout == '':
         return
-    click.secho(process.stdout)
+    click.secho(process.stdout.strip())
 
 
 @cli.command('list-wip')
@@ -44,16 +49,21 @@ def list_merged(branch, p_type, delete):
               default='local',
               help='Run against local or remote branches',
               type=click.Choice(['local', 'remote']))
-def list_wip(branch, p_type):
+@click.option('-f', '--filter',
+              required=False,
+              default='',
+              help='Filter output (case-insensitive)')
+def list_wip(branch, p_type, filter):
     process = subprocess.run([_get_scripts_dir() + '/branch-list.sh',
                               branch,
                               p_type,
-                              'false'],
+                              'false',
+                              filter],
                              stdout=subprocess.PIPE,
                              universal_newlines=True)
     if process.stdout == '':
         return
-    click.secho(process.stdout)
+    click.secho(process.stdout.strip())
 
 
 def _get_scripts_dir():
