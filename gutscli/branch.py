@@ -1,4 +1,5 @@
 import click
+import os
 import subprocess
 
 
@@ -22,7 +23,7 @@ def cli():
               default=False,
               help='Delete merged branches')
 def list_merged(branch, p_type, delete):
-    process = subprocess.run(['scripts/branch-list.sh',
+    process = subprocess.run([_get_scripts_dir() + '/branch-list.sh',
                               branch,
                               p_type,
                               'true'],
@@ -44,7 +45,7 @@ def list_merged(branch, p_type, delete):
               help='Run against local or remote branches',
               type=click.Choice(['local', 'remote']))
 def list_wip(branch, p_type):
-    process = subprocess.run(['scripts/branch-list.sh',
+    process = subprocess.run([_get_scripts_dir() + '/branch-list.sh',
                               branch,
                               p_type,
                               'false'],
@@ -53,3 +54,9 @@ def list_wip(branch, p_type):
     if process.stdout == '':
         return
     click.secho(process.stdout)
+
+
+def _get_scripts_dir():
+    return os.path.realpath(
+        os.path.dirname(
+            os.path.realpath(__file__)) + '/../scripts')

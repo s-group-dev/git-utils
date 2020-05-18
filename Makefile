@@ -28,4 +28,7 @@ ci: linc ## Run local ci
 build-dist: ## Create source distribution
 	python3 setup.py sdist
 
+build-standalone: ## Create standalone package
+	./.venv/bin/pyinstaller --onefile --add-data=scripts/*.sh:scripts guts
+
 # vim: noexpandtab

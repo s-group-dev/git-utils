@@ -1,3 +1,4 @@
 autopep8===1.2.2
 click===7.1.2
 flake8===3.8.1
+pyinstaller===3.6
