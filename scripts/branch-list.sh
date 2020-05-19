@@ -15,7 +15,7 @@ test "${is_merged}" == 'true' && options="${options} --merged" || options="$opti
 test "${type}" == 'remote' && target_branch="${remote}/${branch}" || target_branch="${branch}"
 
 format="%(HEAD) %(refname:short) - %(objectname:short) - %(contents:subject) - %(authorname) (%(committerdate:relative))"
-output=$(git branch ${options} "${branch}" --format="${format}" --sort=-committerdate | sed 's|^[* ]*||' | grep -v "^${target_branch} - ")
+output=$(git branch ${options} "${branch}" --format="${format}" --sort=-committerdate | sed 's|^[* ]*||' | grep -v "^${target_branch} - " | grep -v "^${remote}/HEAD")
 
 if [[ -n "${filter}" ]]; then
   echo "${output}" | grep -i "${filter}"
