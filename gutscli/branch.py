@@ -37,7 +37,7 @@ def list_merged(branch, p_type, filter, delete):
     if process.stdout == '':
         return
     output = process.stdout.strip()
-    click.secho(output)
+    click.echo(output)
 
     if delete:
         for x in output.splitlines():
@@ -51,10 +51,10 @@ def list_merged(branch, p_type, filter, delete):
                           p_type,
                           x]
 
-            print(subprocess.run(params,
-                                 stdout=subprocess.PIPE,
-                                 universal_newlines=True
-                                 ).stdout.strip())
+            click.echo(subprocess.run(params,
+                                      stdout=subprocess.PIPE,
+                                      universal_newlines=True
+                                      ).stdout.strip())
 
 
 @cli.command('list-wip')
@@ -71,7 +71,11 @@ def list_merged(branch, p_type, filter, delete):
               required=False,
               default='',
               help='Filter output (case-insensitive)')
-def list_wip(branch, p_type, filter):
+@click.option('--delete',
+              is_flag=True,
+              default=False,
+              help='Delete merged branches')
+def list_wip(branch, p_type, filter, delete):
     process = subprocess.run([_get_scripts_dir() + '/branch-list.sh',
                               branch,
                               p_type,
@@ -81,7 +85,25 @@ def list_wip(branch, p_type, filter):
                              universal_newlines=True)
     if process.stdout == '':
         return
-    click.secho(process.stdout.strip())
+    output = process.stdout.strip()
+    click.echo(output)
+
+    if delete:
+        for x in output.splitlines():
+            if p_type == 'remote':
+                params = [_get_scripts_dir() + '/branch-delete.sh',
+                          p_type,
+                          'origin',
+                          x]
+            else:
+                params = [_get_scripts_dir() + '/branch-delete.sh',
+                          p_type,
+                          x]
+
+            click.echo(subprocess.run(params,
+                                      stdout=subprocess.PIPE,
+                                      universal_newlines=True
+                                      ).stdout.strip())
 
 
 def _get_scripts_dir():
