@@ -113,4 +113,4 @@ def list_wip(branch, p_type, filter, delete):
 def _get_scripts_dir():
     return os.path.realpath(
         os.path.dirname(
-            os.path.realpath(__file__)) + '/../scripts')
+            os.path.realpath(__file__)) + '/../../scripts')
