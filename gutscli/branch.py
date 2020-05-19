@@ -27,6 +27,8 @@ def cli():
               default=False,
               help='Delete merged branches')
 def list_merged(branch, p_type, filter, delete):
+    """List all other branches that are merged to given branch.
+    """
     process = subprocess.run([_get_scripts_dir() + '/branch-list.sh',
                               branch,
                               p_type,
@@ -76,6 +78,8 @@ def list_merged(branch, p_type, filter, delete):
               default=False,
               help='Delete merged branches')
 def list_wip(branch, p_type, filter, delete):
+    """List all other branches that are NOT merged to given branch.
+    """
     process = subprocess.run([_get_scripts_dir() + '/branch-list.sh',
                               branch,
                               p_type,

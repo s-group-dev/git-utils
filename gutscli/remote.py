@@ -19,4 +19,6 @@ def cli():
               default='./',
               help='Target directory.')
 def list_merged(remote, branch, target):
+    """Merge given remote to this remote.
+    """
     print(remote, branch, target)
