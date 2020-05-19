@@ -2,6 +2,7 @@
 
 from gutscli.branch import cli as branch_command
 from gutscli.exceptions import GutsException
+from gutscli.remote import cli as remote_command
 import click
 import sys
 
@@ -12,6 +13,7 @@ def cli():
 
 
 cli.add_command(branch_command)
+cli.add_command(remote_command)
 
 if __name__ == '__main__':
     try:
