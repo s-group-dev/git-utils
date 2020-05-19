@@ -5,9 +5,11 @@ from gutscli.exceptions import GutsException
 import click
 import sys
 
+
 @click.group()
 def cli():
     pass
+
 
 cli.add_command(branch_command)
 

@@ -36,7 +36,25 @@ def list_merged(branch, p_type, filter, delete):
                              universal_newlines=True)
     if process.stdout == '':
         return
-    click.secho(process.stdout.strip())
+    output = process.stdout.strip()
+    click.secho(output)
+
+    if delete:
+        for x in output.splitlines():
+            if p_type == 'remote':
+                params = [_get_scripts_dir() + '/branch-delete.sh',
+                          p_type,
+                          'origin',
+                          x]
+            else:
+                params = [_get_scripts_dir() + '/branch-delete.sh',
+                          p_type,
+                          x]
+
+            print(subprocess.run(params,
+                                 stdout=subprocess.PIPE,
+                                 universal_newlines=True
+                                 ).stdout.strip())
 
 
 @cli.command('list-wip')
