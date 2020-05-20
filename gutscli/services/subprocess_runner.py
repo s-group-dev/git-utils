@@ -2,10 +2,10 @@ import os
 import subprocess
 
 
-class SubProcessRunner(object):
+class SubprocessRunner(object):
 
-    def run(self, script, params):
-        params = [self._get_scripts_dir() + '/' + script + '.sh'] + params
+    def run(cls, script, params):
+        params = [cls._get_scripts_dir() + '/' + script + '.sh'] + params
         process = subprocess.run(
             params,
             stdout=subprocess.PIPE,
@@ -13,7 +13,7 @@ class SubProcessRunner(object):
 
         return process.stdout.strip()
 
-    def _get_scripts_dir(self):
+    def _get_scripts_dir(cls):
         return os.path.realpath(
             os.path.dirname(
                 os.path.realpath(__file__)) + '/../../scripts')

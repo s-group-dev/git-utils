@@ -1,5 +1,5 @@
 import click
-from gutscli.utils.SubProcessRunner import SubProcessRunner
+from gutscli.services.branch_service import BranchService
 
 
 @click.group('branch')
@@ -28,12 +28,12 @@ def cli():
 def list_merged(branch, p_type, filter, delete):
     """List all other branches that are merged to given branch.
     """
-    process = SubProcessRunner()
-    output = process.run('branch-list', [branch, p_type, 'true', filter])
+    service = BranchService()
+    params = [p_type, 'true', filter]
+    output = service.list(branch, params)
 
-    if output == '':
-        return
-    click.echo(output)
+    if output:
+        click.echo(output)
 
     if delete:
         for x in output.splitlines():
@@ -42,7 +42,7 @@ def list_merged(branch, p_type, filter, delete):
             else:
                 params = [p_type, x]
 
-            click.echo(process.run('branch-delete', params))
+            click.echo(service.delete(params))
 
 
 @cli.command('list-wip')
@@ -66,12 +66,12 @@ def list_merged(branch, p_type, filter, delete):
 def list_wip(branch, p_type, filter, delete):
     """List all other branches that are NOT merged to given branch.
     """
-    process = SubProcessRunner()
-    output = process.run('branch-list', [branch, p_type, 'false', filter])
+    service = BranchService()
+    params = [p_type, 'false', filter]
+    output = service.list(branch, params)
 
-    if output == '':
-        return
-    click.echo(output)
+    if output:
+        click.echo(output)
 
     if delete:
         for x in output.splitlines():
@@ -80,4 +80,4 @@ def list_wip(branch, p_type, filter, delete):
             else:
                 params = [p_type, x]
 
-            click.echo(process.run('branch-delete', params))
+            click.echo(service.delete(params))
