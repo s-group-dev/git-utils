@@ -1,6 +1,5 @@
 import click
-import os
-import subprocess
+from gutscli.utils.SubProcessRunner import SubProcessRunner
 
 
 @click.group('branch')
@@ -29,34 +28,21 @@ def cli():
 def list_merged(branch, p_type, filter, delete):
     """List all other branches that are merged to given branch.
     """
-    process = subprocess.run([_get_scripts_dir() + '/branch-list.sh',
-                              branch,
-                              p_type,
-                              'true',
-                              filter],
-                             stdout=subprocess.PIPE,
-                             universal_newlines=True)
-    if process.stdout == '':
+    process = SubProcessRunner()
+    output = process.run('branch-list', [branch, p_type, 'true', filter])
+
+    if output == '':
         return
-    output = process.stdout.strip()
     click.echo(output)
 
     if delete:
         for x in output.splitlines():
             if p_type == 'remote':
-                params = [_get_scripts_dir() + '/branch-delete.sh',
-                          p_type,
-                          'origin',
-                          x]
+                params = [p_type, 'origin', x]
             else:
-                params = [_get_scripts_dir() + '/branch-delete.sh',
-                          p_type,
-                          x]
+                params = [p_type, x]
 
-            click.echo(subprocess.run(params,
-                                      stdout=subprocess.PIPE,
-                                      universal_newlines=True
-                                      ).stdout.strip())
+            click.echo(process.run('branch-delete', params))
 
 
 @cli.command('list-wip')
@@ -80,37 +66,18 @@ def list_merged(branch, p_type, filter, delete):
 def list_wip(branch, p_type, filter, delete):
     """List all other branches that are NOT merged to given branch.
     """
-    process = subprocess.run([_get_scripts_dir() + '/branch-list.sh',
-                              branch,
-                              p_type,
-                              'false',
-                              filter],
-                             stdout=subprocess.PIPE,
-                             universal_newlines=True)
-    if process.stdout == '':
+    process = SubProcessRunner()
+    output = process.run('branch-list', [branch, p_type, 'false', filter])
+
+    if output == '':
         return
-    output = process.stdout.strip()
     click.echo(output)
 
     if delete:
         for x in output.splitlines():
             if p_type == 'remote':
-                params = [_get_scripts_dir() + '/branch-delete.sh',
-                          p_type,
-                          'origin',
-                          x]
+                params = [p_type, 'origin', x]
             else:
-                params = [_get_scripts_dir() + '/branch-delete.sh',
-                          p_type,
-                          x]
+                params = [p_type, x]
 
-            click.echo(subprocess.run(params,
-                                      stdout=subprocess.PIPE,
-                                      universal_newlines=True
-                                      ).stdout.strip())
-
-
-def _get_scripts_dir():
-    return os.path.realpath(
-        os.path.dirname(
-            os.path.realpath(__file__)) + '/../../scripts')
+            click.echo(process.run('branch-delete', params))
