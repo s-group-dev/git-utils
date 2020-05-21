@@ -37,11 +37,8 @@ def list_merged(branch, p_type, filter, delete):
 
     if delete:
         for x in output.splitlines():
-            if p_type == 'remote':
-                params = [p_type, 'origin', x]
-            else:
-                params = [p_type, x]
-
+            params = [p_type, 'origin',
+                      x] if p_type == 'remote' else [p_type, x]
             click.echo(service.delete(params))
 
 
@@ -75,9 +72,6 @@ def list_wip(branch, p_type, filter, delete):
 
     if delete:
         for x in output.splitlines():
-            if p_type == 'remote':
-                params = [p_type, 'origin', x]
-            else:
-                params = [p_type, x]
-
+            params = [p_type, 'origin',
+                      x] if p_type == 'remote' else [p_type, x]
             click.echo(service.delete(params))
