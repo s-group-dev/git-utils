@@ -8,3 +8,4 @@
 - instead of giving -t remote to branch command, give remote name
 - Give branch name as parameter to branchservice:delete
 - Add method documentations
+- List all commands in readme
