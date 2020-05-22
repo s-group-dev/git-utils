@@ -1,4 +1,5 @@
 import click
+from gutscli.services.remote_service import RemoteService
 
 
 @click.group('remote')
@@ -19,6 +20,9 @@ def cli():
               default='./',
               help='Target directory.')
 def list_merged(remote, branch, target):
-    """Merge given remote to this remote.
+    """Merge given remote to local branch.
     """
-    print(remote, branch, target)
+    service = RemoteService()
+    output = service.subtree_merge(remote, branch, target)
+
+    click.echo(output)

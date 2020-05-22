@@ -10,8 +10,15 @@ target_dir="$3"
 
 project="$(echo $remote_url | sed 's|^.*/\([^/]*\).git$|\1|')"
 
+echo $remote_url
+echo $branch
+echo $target_dir
+echo $project
+
 # add a new remote URL pointing to the separate project thatwe're interested in
-git remote add -f "${project}" "ssh://git@ssh.gitlab.sok.fi:10022/sok-digikehitys/voikukka/${project}.git"
+grep -ql "^${project}$" <(git remote) \
+  && git pull -s subtree "${remote_url}" "${branch}" \
+  || git remote add -f "${project}" "${remote_url}"
 
 # merge the project into the local git project. this does not change any files locally, but prepares the next step
 git merge -s ours --no-commit --allow-unrelated-histories "${project}/${branch}"
@@ -27,5 +34,3 @@ Merged ${remote_url} and branch ${branch} to directory $target_dir.
 EOF
 
 git remote rm "${project}"
-# to update subproject later, run $ git pull -s subtree your-remote branch-name master
-
