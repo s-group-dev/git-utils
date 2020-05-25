@@ -10,11 +10,6 @@ target_dir="$3"
 
 project="$(echo $remote_url | sed 's|^.*/\([^/]*\).git$|\1|')"
 
-echo $remote_url
-echo $branch
-echo $target_dir
-echo $project
-
 # add a new remote URL pointing to the separate project thatwe're interested in
 grep -ql "^${project}$" <(git remote) \
   && git pull -s subtree "${remote_url}" "${branch}" \
