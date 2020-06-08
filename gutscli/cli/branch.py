@@ -12,11 +12,9 @@ def cli():
               required=False,
               default='master',
               help='Default branch/trunk')
-@click.option('-t', '--type', 'p_type',
+@click.option('-r', '--remote', 'remote',
               required=False,
-              default='local',
-              help='Run against local or remote branches',
-              type=click.Choice(['local', 'remote']))
+              help='Remote to check against. If omited, checks against local')
 @click.option('-f', '--filter',
               required=False,
               default='',
@@ -25,20 +23,22 @@ def cli():
               is_flag=True,
               default=False,
               help='Delete merged branches')
-def list_merged(branch, p_type, filter, delete):
+def list_merged(branch, remote, filter, delete):
     """List all other branches that are merged to given branch.
     """
     service = BranchService()
-    params = [p_type, 'true', filter]
+    params = [remote if remote is not None else '', 'true', filter]
     output = service.list(branch, params)
 
-    if output:
-        click.echo(output)
+    if output is None:
+        return
+
+    click.echo(output)
 
     if delete:
         for x in output.splitlines():
-            params = [p_type, 'origin',
-                      x] if p_type == 'remote' else [p_type, x]
+            params = [remote, 'origin',
+                      x] if remote is not None else [remote, x]
             click.echo(service.delete(params))
 
 
@@ -47,11 +47,9 @@ def list_merged(branch, p_type, filter, delete):
               required=False,
               default='master',
               help='Default branch/trunk')
-@click.option('-t', '--type', 'p_type',
+@click.option('-r', '--remote', 'remote',
               required=False,
-              default='local',
-              help='Run against local or remote branches',
-              type=click.Choice(['local', 'remote']))
+              help='Remote to check against. If omited, checks against local')
 @click.option('-f', '--filter',
               required=False,
               default='',
@@ -60,18 +58,20 @@ def list_merged(branch, p_type, filter, delete):
               is_flag=True,
               default=False,
               help='Delete merged branches')
-def list_wip(branch, p_type, filter, delete):
+def list_wip(branch, remote, filter, delete):
     """List all other branches that are NOT merged to given branch.
     """
     service = BranchService()
-    params = [p_type, 'false', filter]
+    params = [remote if remote is not None else '', 'false', filter]
     output = service.list(branch, params)
 
-    if output:
-        click.echo(output)
+    if output is None:
+        return
+
+    click.echo(output)
 
     if delete:
         for x in output.splitlines():
-            params = [p_type, 'origin',
-                      x] if p_type == 'remote' else [p_type, x]
+            params = [remote, 'origin',
+                      x] if remote is not None else [remote, x]
             click.echo(service.delete(params))
