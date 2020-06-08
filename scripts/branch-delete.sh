@@ -2,20 +2,15 @@
 
 set -euo pipefail
 
-type="$1"
-shift
+remote="$1"
+branch="$2"
 
-if [[ "${type}" == 'remote' ]]; then
-  remote="$1"
-  shift
-  branch="$(echo $@ | sed "s|^${remote}/||")"
-else
-  branch="$1"
-fi
+# normalize branch name
+test -n "${remote}" && branch="$(echo "${branch}" | sed "s|^${remote}/||")" || true
 
-branch="$(echo ${branch} | sed 's|^[^/]*/||' | cut -d' ' -f1)"
+branch="$(echo ${branch} | cut -d' ' -f1)"
 
-if [[ "${type}" == 'remote' ]]; then
+if [[ -n "${remote}" ]]; then
   echo "git push "${remote}" --delete "${branch}""
 else
   echo "git branch -d ${branch}"
