@@ -6,6 +6,7 @@ help: ## Show this help
 
 init: ## Initialize project
 	pip3 install -r requirements.txt
+	@echo "Installing Git pre-commit hook"
 	ln -sf ../../bin/git-pre-commit-hook.sh .git/hooks/pre-commit
 
 linc: ## Lint changed Python files
