@@ -33,3 +33,7 @@ init` also adds it to your git [Git pre-commit
 hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
 
 To skip preliminary linting and tests, do `git commit` with option `-n/--no-verify`.
+
+## Documentation
+
+- [Command Reference](docs/COMMANDS.md)
