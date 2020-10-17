@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-from gutscli.cli.branch import cli as branch_command
-from gutscli.cli.remote import cli as remote_command
-from gutscli.cli.repository import cli as repository_command
-from gutscli.exceptions import GutsException
+from cli.branch import cli as branch_command
+from cli.remote import cli as remote_command
+from cli.repository import cli as repository_command
+from exceptions import GutsException
 import click
 import sys
 
