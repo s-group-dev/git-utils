@@ -2,10 +2,5 @@
 
 cd "$(dirname $0)/.."
 
-dir='.venv'
-
-test -d ${dir} || virtualenv ${dir}
-python3 -m venv .venv/
-source "${dir}/bin/activate"
-
-pip install -r requirements.txt
+pipenv --python $(which python3)
+pipenv shell

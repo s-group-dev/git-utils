@@ -23,8 +23,8 @@ loop_exit_code=0
 
 # Changed files only
 test "${only_changed}" -eq 1 \
-  && files="$(git diff --name-only --staged | grep '.py$')" \
-  || files="$(find . -name '*.py' -not -path './.venv/*')"
+  && ( files="$(git diff --name-only --staged | grep '.py$')" || true ) \
+  || files="$(find . -name '*.py')"
 
 for f in ${files}; do
   test "${fix_lint}" -eq 1 \

@@ -1,35 +1,35 @@
 .DEFAULT_GOAL := help
-.PHONY: init
+.PHONY: help init install test linc lint linc-fix lint-fix clean ci build-dist build-standalone
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":[^#]*?## "}; {printf "\033[36m%-50s\033[0m %s\n", $$1, $$2}'
 
 init: ## Initialize project
-	pip3 install -r requirements.txt
 	@echo "Installing Git pre-commit hook"
 	ln -sf ../../bin/git-pre-commit-hook.sh .git/hooks/pre-commit
+	make install
+
+install: ## Install dependencies
+	pipenv install --dev
+
+ci: linc test ## Run local ci
+
+clean: ## Remove all Python combile files
+	find . -name '*.pyc' -delete
 
 linc: ## Lint changed Python files
 	bin/run-lint.sh --changed
 
-lint: ## Lint all Python files
-	bin/run-lint.sh
-
 linc-fix: ## Fix linter errors for changes Python files
 	bin/run-lint.sh --changed --fix
+
+lint: ## Lint all Python files
+	bin/run-lint.sh
 
 lint-fix: ## Fix linter for Python files
 	bin/run-lint.sh --fix
 
-clean: ## Remove all Python combile files
-	find . -name '*.pyc' -not -path './.venv/*' -delete
-
-ci: linc ## Run local ci
-
-build-dist: ## Create source distribution
-	python3 setup.py sdist
-
-build-standalone: ## Create standalone package
-	./.venv/bin/pyinstaller --onefile --add-data=scripts/*.sh:scripts guts
+test: ## Run tests
+	PYTHONPATH=. pytest
 
 # vim: noexpandtab
