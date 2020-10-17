@@ -4,23 +4,33 @@ set -euo pipefail
 
 cd "$(dirname $0)/.."
 
-f='docs/COMMANDS.md'
+function print_topic() {
+    echo "$1"
+    local len="$(echo "$1" | wc -c | xargs echo)"
+    printf "%$(($len-1))s\n" | tr ' ' "$2"
+}
+
+f='docs/COMMANDS.rst'
+title='GUTS Command Reference'
 
 {
-    echo -e "# GUTS Command Reference\n\n"
-
-    while read -r line; do
-    read a b desc < <(echo $line)
-
-    cmd="${a} ${b}"
-    echo -e "## $ guts ${cmd}\n"
-
-    echo -e "> ${desc}\n"
-    
-    echo '```'
-    ./guts $cmd --help
-    echo '```'
+    print_topic "${title}" '='
     echo
 
+    while read -r line; do
+        read a b desc < <(echo $line)
+
+        cmd="${a} ${b}"
+        print_topic "$ guts ${cmd}" '-'
+
+        echo -e "\n   ${desc}\n"
+
+        echo -e '::\n'
+        
+        python3 src/guts.py $cmd --help | while IFS='' read help_text; do
+            echo "   ${help_text}"
+        done 
+
+        echo
     done < <(echo "$(./bin/list-commands.sh)")
 } >"${f}"

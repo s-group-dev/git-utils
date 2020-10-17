@@ -23,15 +23,25 @@ loop_exit_code=0
 
 # Changed files only
 test "${only_changed}" -eq 1 \
-  && ( files="$(git diff --name-only --staged | grep '.py$')" || true ) \
-  || files="$(find . -name '*.py')"
+  && ( py_files="$(git diff --name-only --staged | grep '.py$')" || true ) \
+  || py_files="$(find . -name '*.py')"
 
-for f in ${files}; do
+for f in ${py_files}; do
   test "${fix_lint}" -eq 1 \
     && autopep8 --in-place --aggressive --aggressive "${f}" \
     && continue
 
   flake8 "$f"
+  loop_exit_code=$?
+  test ${exit_code} -lt ${loop_exit_code} && exit_code=${loop_exit_code}
+done
+
+test "${only_changed}" -eq 1 \
+  && ( rst_files="$(git diff --name-only --staged | grep '.rst$')" || true ) \
+  || rst_files="$(find . -name '*.rst')"
+
+for f in ${rst_files}; do
+  rstcheck "$f"
   loop_exit_code=$?
   test ${exit_code} -lt ${loop_exit_code} && exit_code=${loop_exit_code}
 done
