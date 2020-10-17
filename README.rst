@@ -1,39 +1,45 @@
-# Git Utils, in short: guts
+Git Utils, in short: guts =========================
 
 A toolbox for code janitors handle git operations withing world of git.
 
-## Prequisites
+Prequisites
+-----------
+You need to have ``git``, ``bash`` and `Pipenv <https://docs.pipenv.org/>`__
+installed with Python 3.7 set as default.
 
-You need to have `git` and `bash` installed with Python 3.7 set as default.
+Run guts
+--------
+``guts`` is a python wrapper for `Git <https://git-scm.com/>`__ to run tasks
+that require obscure magic. Tool documents itself.
 
-## Run guts
+See other active commands in ``Makefile``.
 
-`guts` is a python wrapper for [Git](https://git-scm.com/) to run tasks that
-require obscure magic. Tool documents itself.
+Please consider adding ``guts`` in your ``$PATH``.
 
-See other active commands in `Makefile`.
+Activate virtualenv
+-------------------
+::
 
-Please consider adding `guts` in your `$PATH`.
+. bin/virtualenv make init
 
-## Activate virtualenv
+Install
+-------
+::
 
-```
-source bin/virtualenv
-make init
-```
+make install
 
-## Contributing
+Contributing
+------------
+Project follows coding standards listed below: - `Flake8
+<https://flake8.pycqa.org/>`__
 
-Project follows coding standards listed below:
-- [Flake8](https://flake8.pycqa.org/)
+Please run ``make ci`` before adding new lines to codebase. Please note that
+runnning ``make init`` also adds it to your git `Git pre-commit hook
+<https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks>`__.
 
+To skip preliminary linting and tests, do ``git commit`` with option
+``-n/--no-verify``.
 
-Please run `make ci` before adding new lines to codebase. Please note that runnning `make
-init` also adds it to your git [Git pre-commit
-hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
-
-To skip preliminary linting and tests, do `git commit` with option `-n/--no-verify`.
-
-## Documentation
-
-- [Command Reference](docs/COMMANDS.md)
+Documentation
+-------------
+- `Command Reference <docs/COMMANDS.md>`__

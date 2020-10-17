@@ -30,6 +30,6 @@ lint-fix: ## Fix linter for Python files
 	bin/run-lint.sh --fix
 
 test: ## Run tests
-	PYTHONPATH=. pytest
+	@PYTHONPATH=. pytest
 
 # vim: noexpandtab
