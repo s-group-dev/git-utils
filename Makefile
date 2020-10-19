@@ -12,10 +12,15 @@ init: ## Initialize project
 install: ## Install dependencies
 	pipenv install --dev
 
+install-local: ## Install a local setup.py into your virtual environment
+	pipenv install -e .
+
 ci: linc test ## Run local ci
 
 clean: ## Remove all Python combile files
 	find . -name '*.pyc' -delete
+	rm -rf build *.egg-info
+	pipenv clean
 
 linc: ## Lint changed Python files
 	bin/run-lint.sh --changed

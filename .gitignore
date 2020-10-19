@@ -1,10 +1,9 @@
 # Python
 __pycache__/
 
-# Python: PyInstaller
-/build/
-/dist/
-/guts.spec
+
+# Python: Pipenv
+src/guts.egg-info/
 
 # Editor: vim
 *.sw[op]

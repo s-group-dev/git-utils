@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1696011826217bf7fbc2cdc43b20e6abec7130492a4cb2588e4acaf5116415a8"
+            "sha256": "43db3a466a6a600d29433864dad7cacd382f4402286e386a5ff2be51b7d328d4"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -33,6 +33,10 @@
             "version": "==0.16"
         },
         "git-utils": {
+            "editable": true,
+            "path": "."
+        },
+        "guts": {
             "editable": true,
             "path": "."
         },
