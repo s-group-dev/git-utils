@@ -14,6 +14,5 @@ class SubprocessRunner(object):
         return process.stdout.strip()
 
     def _get_scripts_dir(cls):
-        return os.path.realpath(
-            os.path.dirname(
-                os.path.realpath(__file__)) + '/../../scripts')
+        
+        return os.path.join(os.path.dirname(os.path.realpath(__file__)), '../../scripts')

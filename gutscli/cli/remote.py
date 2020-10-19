@@ -1,5 +1,5 @@
 import click
-from services.remote_service import RemoteService
+from gutscli.services.remote_service import RemoteService
 
 
 @click.group('remote')

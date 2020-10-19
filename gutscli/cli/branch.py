@@ -1,5 +1,5 @@
 import click
-from services.branch_service import BranchService
+from gutscli.services.branch_service import BranchService
 
 
 @click.group('branch')
