@@ -1,5 +1,5 @@
 import subprocess
-from services.subprocess_runner import SubprocessRunner
+from gutscli.services.subprocess_runner import SubprocessRunner
 
 def test_truthy():
     """
