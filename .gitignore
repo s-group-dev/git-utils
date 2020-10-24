@@ -3,7 +3,9 @@ __pycache__/
 
 
 # Python: Pipenv
-src/guts.egg-info/
+/src/guts.egg-info/
+/build/
+/dist/
 
 # Editor: vim
 *.sw[op]

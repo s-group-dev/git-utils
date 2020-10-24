@@ -12,8 +12,8 @@ setup(
     author='Niko Kivela',
     author_email='niko@tovrleaf.com',
     url='https://github.com/tovrleaf/git-utils',
-    packages=find_packages(),
-    include_package_data=True,
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
     zip_safe=False,
     install_requires=[
         'click==7.1.2'
@@ -23,4 +23,7 @@ setup(
             'guts=gutscli.guts:main'
         ]
     },
+    scripts=[
+        'src/scripts/branch-list.sh'
+    ]
 )

@@ -7,10 +7,10 @@ help: ## Show this help
 init: ## Initialize project
 	@echo "Installing Git pre-commit hook"
 	ln -sf ../../bin/git-pre-commit-hook.sh .git/hooks/pre-commit
-	make install
 
 install: ## Install dependencies
 	pipenv install --dev
+	@echo "Now run: pipenv shell"		
 
 install-local: ## Install a local setup.py into your virtual environment
 	pipenv install -e .
