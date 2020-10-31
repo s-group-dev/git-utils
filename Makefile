@@ -10,10 +10,15 @@ init: ## Initialize project
 
 install: ## Install dependencies
 	pipenv install --dev
-	@echo "Now run: pipenv shell"		
+	@echo "Now run: pipenv shell"
 
 install-local: ## Install a local setup.py into your virtual environment
 	pipenv install -e .
+
+distribute: ## Create distribution and install it to your machine
+	pip3 uninstall -y guts
+	python3 setup.py sdist
+	pip3 install dist/guts-*.tar.gz
 
 ci: linc test ## Run local ci
 
