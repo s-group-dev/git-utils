@@ -13,9 +13,8 @@ docutils = "==0.16"
 
 [packages]
 click = "==7.1.2"
-git-utils = {editable = true, path = "."}
 rstcheck = "==3.3.1"
 guts = {editable = true, path = "."}
 
 [requires]
-python_version = "3.8"
+python_version = "3"
