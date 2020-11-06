@@ -1,4 +1,5 @@
-Git Utils, in short: guts =========================
+Git Utils, in short: guts
+=========================
 
 A toolbox for code janitors handle git operations withing world of git.
 
@@ -42,4 +43,4 @@ To skip preliminary linting and tests, do ``git commit`` with option
 
 Documentation
 -------------
-- `Command Reference <docs/COMMANDS.md>`__
+- `Command Reference </docs/COMMANDS.md>`__
