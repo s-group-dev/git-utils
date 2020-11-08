@@ -1,4 +1,5 @@
 import subprocess
+
 from gutscli.services.subprocess_runner import SubprocessRunner
 
 
@@ -13,7 +14,7 @@ def test_with_mock(mocker):
     """
     Example of mock test
     """
-    mocker.patch('subprocess.run')
+    mocker.patch("subprocess.run")
     runner = SubprocessRunner()
-    runner.run('script', [])
+    runner.run("script", [])
     subprocess.run.assert_called()

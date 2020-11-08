@@ -18,8 +18,8 @@ distribute: ## Create distribution and install it to your machine
 	pip3 install dist/guts-*.tar.gz
 
 format: ## Format code using isort and black
-	pipenv run black src/
-	pipenv run isort src/
+	pipenv run black src/ tests/
+	pipenv run isort src/ test/
 
 init: ## Initialize project
 	pipenv run pre-commit install -t pre-commit
@@ -34,9 +34,6 @@ install-local: ## Install a local setup.py into your virtual environment
 lint: ## Lint all Python files
 	pipenv run rstcheck **/*.rst
 	pipenv run flake8 src/ tests/
-	pipenv run mypy src/ tests/
-
-scc: ## Run static code checker
 	pipenv run mypy src/ tests/
 
 test: ## Run tests

@@ -1,32 +1,47 @@
 repos:
   - repo: local
     hooks:
-      - id: lint 
-        name: lint
+      - id: isort
+        name: isort
         stages: [commit]
         language: system
-        entry: make lint
+        entry: pipenv run isort
         types: [python]
+
+      - id: black
+        name: black
+        stages: [commit]
+        language: system
+        entry: pipenv run black
+        types: [python]
+
+      - id: flake8
+        name: flake8
+        stages: [commit]
+        language: system
+        entry: pipenv run flake8
+        types: [python]
+        exclude: setup.py
 
       - id: mypy
         name: mypy
         stages: [commit]
         language: system
-        entry: pipenv run mypy src/ tests/
+        entry: pipenv run mypy
         types: [python]
         pass_filenames: false
 
-      - id: test
+      - id: pytest
         name: pytest
-        stages: [push]
+        stages: [commit]
         language: system
         entry: pipenv run pytest
         types: [python]
 
-      - id: test-cov
-        name: pytest-cov
+      - id: pytest-cov
+        name: pytest
         stages: [push]
         language: system
-        entry: pipenv run pytest --cov --cov-report term --cov-report html:./coverage --cov-fail-under=0
+        entry: pipenv run pytest --cov --cov-fail-under=0
         types: [python]
         pass_filenames: false
