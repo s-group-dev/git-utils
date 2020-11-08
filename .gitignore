@@ -7,7 +7,7 @@ __pycache__/
 /build/
 /dist/
 /coverage/
-/.coverage/
+/.coverage
 
 # Editor: vim
 *.sw[op]
