@@ -44,6 +44,9 @@ lint-fix: ## Fix linter for Python files
 	bin/run-lint.sh --fix
 
 test: ## Run tests
-	@PYTHONPATH=. pytest
+	pipenv run pytest
+
+test-cov: ## Run test coverage
+	pipenv run pytest --cov --cov-report term --cov-report html:./coverage --cov-fail-under=0
 
 # vim: noexpandtab
