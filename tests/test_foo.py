@@ -1,11 +1,13 @@
 import subprocess
 from gutscli.services.subprocess_runner import SubprocessRunner
 
+
 def test_truthy():
     """
     Test that will succeed
     """
-    assert True == True
+    assert True is True
+
 
 def test_with_mock(mocker):
     """

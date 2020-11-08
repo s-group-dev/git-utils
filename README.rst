@@ -19,18 +19,18 @@ Activate virtualenv
 -------------------
 ::
 
-make install
-pipenv shell
+   make install
+   pipenv shell
 
 Install
 -------
 ::
 
-# Local install
-make install-local
-
-# Global install
-make distribute
+   # Local install
+   make install-local
+   
+   # Global install
+   make distribute
 
 Contributing
 ------------

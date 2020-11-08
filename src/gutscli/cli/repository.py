@@ -1,15 +1,15 @@
 import click
+
 from gutscli.services.repository_service import RepositoryService
 
 
-@click.group('repository')
+@click.group("repository")
 def cli():
     pass
 
 
-@cli.command('clean-up')
+@cli.command("clean-up")
 def clean_up():
-    """Clean up repository and reduce its disk size.
-    """
+    """Clean up repository and reduce its disk size."""
     service = RepositoryService()
     click.echo(service.clean_up())

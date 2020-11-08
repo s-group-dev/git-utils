@@ -24,7 +24,7 @@ loop_exit_code=0
 # Changed files only
 test "${only_changed}" -eq 1 \
   && ( py_files="$(git diff --name-only --staged | grep '.py$')" || true ) \
-  || py_files="$(find . -name '*.py')"
+  || py_files="$(find . -name '*.py' -not -path ./\.\*)"
 
 for f in ${py_files}; do
   test "${fix_lint}" -eq 1 \
@@ -38,7 +38,7 @@ done
 
 test "${only_changed}" -eq 1 \
   && ( rst_files="$(git diff --name-only --staged | grep '.rst$')" || true ) \
-  || rst_files="$(find . -name '*.rst')"
+  || rst_files="$(find . -name '*.rst' -not -path ./\.\*)"
 
 for f in ${rst_files}; do
   rstcheck "$f"
