@@ -20,7 +20,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pipenv
-          pip install -r requirements.txt
+          make install
+          pipenv shel
       - name: Lint with flake8
         run: |
           make lint
