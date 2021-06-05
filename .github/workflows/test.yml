@@ -4,19 +4,17 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-    #strategy:
-    #  matrix:
-    #    python-version: [3.8]
 
     steps:
       - name: "📥 Checkout"
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       # Setup Python (faster than using Python container)
       - name: "🐍 Setup Python"
         uses: actions/setup-python@v2
         with:
           python-version: "3.8"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Install pipenv"
         run: |
