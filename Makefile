@@ -42,8 +42,4 @@ test: ## Run tests
 test-cov: ## Run test coverage
 	pipenv run pytest tests/ --cov --cov-report term --cov-report html:./coverage --cov-fail-under=0
 
-test-cov-ci: ## Run test coverage in ci
-	pipenv run pytest tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
-
-
 # vim: noexpandtab
