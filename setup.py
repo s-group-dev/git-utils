@@ -15,7 +15,7 @@ setup(
     packages=find_packages("src"),
     package_dir={"": "src"},
     install_requires=[
-        "click==7.1.2",
+        "click==8.0.1",
     ],
     entry_points={"console_scripts": ["guts=gutscli.guts:main"]},
     include_package_data=True,

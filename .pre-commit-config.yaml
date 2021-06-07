@@ -36,6 +36,8 @@ repos:
         stages: [commit]
         language: system
         entry: pipenv run pytest
+        pass_filenames: false
+        always_run: true
         types: [python]
 
       - id: pytest-cov
