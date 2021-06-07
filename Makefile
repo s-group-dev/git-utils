@@ -37,9 +37,9 @@ lint: ## Lint all Python files
 	pipenv run mypy src/ tests/
 
 test: ## Run tests
-	pipenv run pytest tests/
+	pipenv run pytest
 
 test-cov: ## Run test coverage
-	pipenv run pytest tests/ --cov --cov-report term --cov-report html:./coverage --cov-fail-under=0
+	pipenv run pytest --cov --cov-report term --cov-report html:./coverage --cov-fail-under=0
 
 # vim: noexpandtab
