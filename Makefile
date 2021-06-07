@@ -12,10 +12,11 @@ clean: ## Remove all Python combile files
 	rm -rf build *.egg-info
 	pipenv clean
 
-distribute: ## Create distribution and install it to your machine
-	pip3 uninstall -y guts
+build: ## Build distribution
+	python3 -m build
+
+build-local: ## Create local distribution 
 	python3 setup.py sdist
-	pip3 install dist/guts-*.tar.gz
 
 format: ## Format code using isort and black
 	pipenv run black src/ tests/

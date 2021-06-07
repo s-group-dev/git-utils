@@ -5,15 +5,19 @@ with open("README.rst") as f:
 
 setup(
     name="guts",
-    version="0.0.0",
+    version="0.0.3",
+    author="Niko Kivela",
+    author_email="niko@tovrleaf.com",
     description="A toolbox for code janitors handle git operations "
     + "withing world of git",
     long_description=readme,
-    author="Niko Kivela",
-    author_email="niko@tovrleaf.com",
     url="https://github.com/tovrleaf/git-utils",
-    packages=find_packages("src"),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+    ],
     package_dir={"": "src"},
+    packages=find_packages("src"),
     install_requires=[
         "click==8.0.1",
     ],

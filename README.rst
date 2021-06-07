@@ -5,8 +5,9 @@ A toolbox for code janitors handle git operations withing world of git.
 
 Prequisites
 -----------
-You need to have ``git``, ``bash`` and `Pipenv <https://docs.pipenv.org/>`__
-installed with Python 3 set as default. You also need ``pipenv``.
+You need to have ``git``, ``bash``, `Pipenv <https://docs.pipenv.org/>`__
+and `Twine <https://pypi.org/project/twine/>`__ installed with
+Python 3 set as default.
 
 Run guts
 --------
@@ -22,20 +23,10 @@ Activate virtualenv
    make install
    pipenv shell
 
-Install
--------
-::
-
-   # Local install
-   make install-local
-   
-   # Global install
-   make distribute
-
 Contributing
 ------------
-Project follows coding standards listed below: - `Flake8
-<https://flake8.pycqa.org/>`__
+Project follows coding standards listed below:
+- `Flake8 <https://flake8.pycqa.org/>`__
 
 Please run ``make ci`` before adding new lines to codebase. Please note that
 runnning ``make init`` also adds it to your git `Git pre-commit hook
