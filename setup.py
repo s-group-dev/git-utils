@@ -6,7 +6,7 @@ with open("README.rst") as f:
 __version__ = "0.1.0"
 
 setup(
-    name="guts",
+    name="gtsh",
     version=__version__,
     author="Niko Kivela",
     author_email="niko@tovrleaf.com",
@@ -23,6 +23,6 @@ setup(
     install_requires=[
         "click==8.0.1",
     ],
-    entry_points={"console_scripts": ["guts=gutscli.guts:main"]},
+    entry_points={"console_scripts": ["gtsh=gtshcli.gtsh:main"]},
     include_package_data=True,
 )

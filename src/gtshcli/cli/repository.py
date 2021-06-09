@@ -1,6 +1,6 @@
 import click
 
-from gutscli.services.repository_service import RepositoryService
+from gtshcli.services.repository_service import RepositoryService
 
 
 @click.group("repository")

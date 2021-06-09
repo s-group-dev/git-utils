@@ -3,8 +3,8 @@ from unittest.mock import call, patch
 import pytest
 from click.testing import CliRunner
 
-from gutscli.cli.branch import cli
-from gutscli.services.branch_service import BranchService
+from gtshcli.cli.branch import cli
+from gtshcli.services.branch_service import BranchService
 
 
 @pytest.fixture

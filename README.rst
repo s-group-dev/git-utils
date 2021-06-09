@@ -1,11 +1,24 @@
-Git Utils, in short: guts
-=========================
+#########################
+Git Utils, in short: gtsh
+#########################
 
 A toolbox for code janitors handle git operations within world of git.
 
-Run guts
+**********
+Background
+**********
+
+Git Utils combines most of boring and sickening commands that you need to do
+with git. 
+
+Definition
+==========
+gittish: Having the characteristics or likeness of a git. Something sickening.
+Hence the name ``gtsh`` (gittish).
+
+Run gtsh
 --------
-``guts`` is a python wrapper for `Git <https://git-scm.com/>`__ to run tasks
+``gtsh`` is a python wrapper for `Git <https://git-scm.com/>`__ to run tasks
 that require obscure magic. Tool documents itself.
 
 Documentation
