@@ -16,7 +16,7 @@ Activate virtualenv
 
 See other active commands in ``Makefile``.
 
-Contributing
+Style
 ------------
 Project follows coding standards listed below:
 - `Flake8 <https://flake8.pycqa.org/>`__

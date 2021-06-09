@@ -47,3 +47,10 @@ repos:
         entry: pipenv run pytest --cov --cov-fail-under=0
         types: [python]
         pass_filenames: false
+
+      - id: rstcheck
+        name: rstcheck
+        stages: [commit]
+        language: system
+        entry: pipenv run rstcheck **/*.rst
+        types: [python]
