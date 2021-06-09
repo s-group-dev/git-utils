@@ -37,7 +37,7 @@ lint: ## Lint all Python files
 	pipenv run flake8 src/ tests/
 	pipenv run mypy src/ tests/
 
-release-test: ## Release to testpypi
+release: ## Release to pypi
 	python3 -m twine upload dist/*
 
 release-test: ## Release to testpypi
