@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: ci clean distribute format help init install-local install linc-fix lint lint-fix test
+.PHONY: ci clean build build-local format help init install install-local release-test test test-cov
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":[^#]*?## "}; {printf "\033[36m%-50s\033[0m %s\n", $$1, $$2}'
@@ -36,6 +36,12 @@ lint: ## Lint all Python files
 	pipenv run rstcheck **/*.rst
 	pipenv run flake8 src/ tests/
 	pipenv run mypy src/ tests/
+
+release-test: ## Release to testpypi
+	python3 -m twine upload dist/*
+
+release-test: ## Release to testpypi
+	python3 -m twine upload --repository testpypi dist/*
 
 test: ## Run tests
 	pipenv run pytest

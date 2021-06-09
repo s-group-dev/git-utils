@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 with open("README.rst") as f:
     readme = f.read()
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 
 setup(
     name="guts",

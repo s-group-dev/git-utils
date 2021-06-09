@@ -51,6 +51,6 @@ repos:
       - id: rstcheck
         name: rstcheck
         stages: [commit]
-        language: system
-        entry: pipenv run rstcheck **/*.rst
-        types: [python]
+        language: python
+        types: [rst]
+        entry: pipenv run rstcheck 
