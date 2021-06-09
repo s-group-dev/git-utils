@@ -3,9 +3,11 @@ from setuptools import find_packages, setup
 with open("README.rst") as f:
     readme = f.read()
 
+__version__ = "0.0.3"
+
 setup(
     name="guts",
-    version="0.0.3",
+    version=__version__,
     author="Niko Kivela",
     author_email="niko@tovrleaf.com",
     description="A toolbox for code janitors handle git operations "
