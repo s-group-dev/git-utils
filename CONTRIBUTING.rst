@@ -3,9 +3,8 @@ CONTRIBUTING
 
 Prequisites
 -----------
-You need to have ``git``, ``bash``, `Pipenv <https://docs.pipenv.org/>`__
-and `Twine <https://pypi.org/project/twine/>`__ installed with
-Python 3 set as default.
+You need to have ``git``, ``bash`` and `Pipenv <https://docs.pipenv.org/>`__
+installed with Python 3 set as default.
 
 Activate virtualenv
 -------------------

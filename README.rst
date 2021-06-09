@@ -1,7 +1,7 @@
 Git Utils, in short: guts
 =========================
 
-A toolbox for code janitors handle git operations withing world of git.
+A toolbox for code janitors handle git operations within world of git.
 
 Run guts
 --------
