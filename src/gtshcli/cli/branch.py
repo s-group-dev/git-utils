@@ -1,6 +1,6 @@
 import click
 
-from gutscli.services.branch_service import BranchService
+from gtshcli.services.branch_service import BranchService
 
 
 @click.group("branch")
@@ -29,19 +29,7 @@ def cli():
 @click.option("--delete", is_flag=True, default=False, help="Delete merged branches")
 def list_merged(branch, remote, filter, delete):
     """List all other branches that are merged to given branch."""
-    service = BranchService()
-    params = [remote if remote is not None else "", "true", filter]
-    output = service.list(branch, params)
-
-    if output is None:
-        return
-
-    click.echo(output)
-
-    if delete:
-        for x in output.splitlines():
-            params = [remote if remote is not None else "", x]
-            click.echo(service.delete(params))
+    _list_branches(branch, remote, filter, delete, "true")
 
 
 @cli.command("list-wip")
@@ -65,8 +53,12 @@ def list_merged(branch, remote, filter, delete):
 @click.option("--delete", is_flag=True, default=False, help="Delete merged branches")
 def list_wip(branch, remote, filter, delete):
     """List all other branches that are NOT merged to given branch."""
+    _list_branches(branch, remote, filter, delete, "false")
+
+
+def _list_branches(branch, remote, filter, delete, is_merged):
     service = BranchService()
-    params = [remote if remote is not None else "", "false", filter]
+    params = [remote if remote is not None else "", is_merged, filter]
     output = service.list(branch, params)
 
     if output is None:

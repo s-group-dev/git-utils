@@ -1,6 +1,6 @@
 import click
 
-from gutscli.services.remote_service import RemoteService
+from gtshcli.services.remote_service import RemoteService
 
 
 @click.group("remote")

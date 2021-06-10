@@ -1,4 +1,4 @@
-from gutscli.services.subprocess_runner import SubprocessRunner
+from gtshcli.services.subprocess_runner import SubprocessRunner
 
 
 class BranchService(object):

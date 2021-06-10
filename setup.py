@@ -3,20 +3,29 @@ from setuptools import find_packages, setup
 with open("README.rst") as f:
     readme = f.read()
 
+__version__ = "0.1.0"
+
 setup(
-    name="guts",
-    version="0.0.0",
+    name="gtsh",
+    version=__version__,
+    author="Niko Kivela",
+    author_email="niko@tovrleaf.com",
     description="A toolbox for code janitors handle git operations "
     + "withing world of git",
     long_description=readme,
-    author="Niko Kivela",
-    author_email="niko@tovrleaf.com",
     url="https://github.com/tovrleaf/git-utils",
-    packages=find_packages("src"),
-    package_dir={"": "src"},
-    install_requires=[
-        "click==7.1.2",
+    classifiers=[
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Topic :: Software Development :: Version Control :: Git",
     ],
-    entry_points={"console_scripts": ["guts=gutscli.guts:main"]},
+    keywords="git development source",
+    package_dir={"": "src"},
+    packages=find_packages("src"),
+    install_requires=[
+        "click==8.0.1",
+    ],
+    entry_points={"console_scripts": ["gtsh=gtshcli.gtsh:main"]},
     include_package_data=True,
 )

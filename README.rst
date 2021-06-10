@@ -1,49 +1,27 @@
-Git Utils, in short: guts
-=========================
+#########################
+Git Utils, in short: gtsh
+#########################
 
-A toolbox for code janitors handle git operations withing world of git.
+A toolbox for code janitors handle git operations within world of git.
 
-Prequisites
------------
-You need to have ``git``, ``bash`` and `Pipenv <https://docs.pipenv.org/>`__
-installed with Python 3 set as default. You also need ``pipenv``.
+**********
+Background
+**********
 
-Run guts
+Git Utils combines most of boring and sickening commands that you need to do
+with git. 
+
+Definition
+==========
+gittish: Having the characteristics or likeness of a git. Something sickening.
+Hence the name ``gtsh`` (gittish).
+
+Run gtsh
 --------
-``guts`` is a python wrapper for `Git <https://git-scm.com/>`__ to run tasks
+``gtsh`` is a python wrapper for `Git <https://git-scm.com/>`__ to run tasks
 that require obscure magic. Tool documents itself.
-
-See other active commands in ``Makefile``.
-
-Activate virtualenv
--------------------
-::
-
-   make install
-   pipenv shell
-
-Install
--------
-::
-
-   # Local install
-   make install-local
-   
-   # Global install
-   make distribute
-
-Contributing
-------------
-Project follows coding standards listed below: - `Flake8
-<https://flake8.pycqa.org/>`__
-
-Please run ``make ci`` before adding new lines to codebase. Please note that
-runnning ``make init`` also adds it to your git `Git pre-commit hook
-<https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks>`__.
-
-To skip preliminary linting and tests, do ``git commit`` with option
-``-n/--no-verify``.
 
 Documentation
 -------------
 - `Command Reference <docs/COMMANDS.rst>`__
+- `Contributing <CONTRIBUTING.rst>`__

@@ -11,7 +11,7 @@ function print_topic() {
 }
 
 f='docs/COMMANDS.rst'
-title='GUTS Command Reference'
+title='GTSH Command Reference'
 
 {
     print_topic "${title}" '='
@@ -21,13 +21,13 @@ title='GUTS Command Reference'
         read a b desc < <(echo $line)
 
         cmd="${a} ${b}"
-        print_topic "$ guts ${cmd}" '-'
+        print_topic "$ gtsh ${cmd}" '-'
 
         echo -e "\n   ${desc}\n"
 
         echo -e '::\n'
         
-        python3 src/guts.py $cmd --help | while IFS='' read help_text; do
+        python3 src/gtshcli/gtsh.py $cmd --help | while IFS='' read help_text; do
             echo "   ${help_text}"
         done 
 

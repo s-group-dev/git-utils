@@ -36,6 +36,8 @@ repos:
         stages: [commit]
         language: system
         entry: pipenv run pytest
+        pass_filenames: false
+        always_run: true
         types: [python]
 
       - id: pytest-cov
@@ -45,3 +47,10 @@ repos:
         entry: pipenv run pytest --cov --cov-fail-under=0
         types: [python]
         pass_filenames: false
+
+      - id: rstcheck
+        name: rstcheck
+        stages: [commit]
+        language: python
+        types: [rst]
+        entry: pipenv run rstcheck 
