@@ -15,9 +15,12 @@ setup(
     long_description=readme,
     url="https://github.com/tovrleaf/git-utils",
     classifiers=[
-        "Programming Language :: Python :: 3",
+        "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Topic :: Software Development :: Version Control :: Git",
     ],
+    keywords="git development source",
     package_dir={"": "src"},
     packages=find_packages("src"),
     install_requires=[
