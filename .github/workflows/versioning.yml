@@ -1,21 +1,26 @@
-name: Semantic Release
-
+name: Bump Version
 on:
   push:
     branches:
       - master
+    paths-ignore:
+      - 'src/version.yml'
+      - 'CHANGELOG.md'
 
 jobs:
-  release:
+  build:
+    name: "Conventional Changelog Action"
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+      - name: "📥 Checkout"
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Python Semantic Release
-      uses: relekang/python-semantic-release@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        pypi_token: ${{ secrets.PYPI_TOKEN }}
+      - name: "🚀️ Bump version and push tag"
+        uses: TriPSs/conventional-changelog-action@v3.7.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          tag-prefix: ''
+          version-file: 'src/version.yml'

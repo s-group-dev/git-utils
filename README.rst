@@ -21,6 +21,11 @@ Run gtsh
 ``gtsh`` is a python wrapper for `Git <https://git-scm.com/>`__ to run tasks
 that require obscure magic. Tool documents itself.
 
+Installation
+============
+
+``pip3 install gtsh``
+
 Documentation
 -------------
 - `Command Reference <docs/COMMANDS.rst>`__
