@@ -1,14 +1,14 @@
-GUTS Command Reference
+GTSH Command Reference
 ======================
 
-$ guts branch list-merged
+$ gtsh branch list-merged
 -------------------------
 
    List all other branches that are merged to given branch.
 
 ::
 
-   Usage: guts.py branch list-merged [OPTIONS]
+   Usage: gtsh.py branch list-merged [OPTIONS]
    
      List all other branches that are merged to given branch.
    
@@ -19,14 +19,14 @@ $ guts branch list-merged
      --delete           Delete merged branches
      --help             Show this message and exit.
 
-$ guts branch list-wip
+$ gtsh branch list-wip
 ----------------------
 
    List all other branches that are NOT merged to given branch.
 
 ::
 
-   Usage: guts.py branch list-wip [OPTIONS]
+   Usage: gtsh.py branch list-wip [OPTIONS]
    
      List all other branches that are NOT merged to given branch.
    
@@ -37,14 +37,14 @@ $ guts branch list-wip
      --delete           Delete merged branches
      --help             Show this message and exit.
 
-$ guts remote merge-subtree
+$ gtsh remote merge-subtree
 ---------------------------
 
    Merge given remote to local branch.
 
 ::
 
-   Usage: guts.py remote merge-subtree [OPTIONS]
+   Usage: gtsh.py remote merge-subtree [OPTIONS]
    
      Merge given remote to local branch.
    
@@ -54,14 +54,14 @@ $ guts remote merge-subtree
      -t, --target TEXT  Target directory.
      --help             Show this message and exit.
 
-$ guts repository clean-up
+$ gtsh repository clean-up
 --------------------------
 
    Clean up repository and reduce its disk size.
 
 ::
 
-   Usage: guts.py repository clean-up [OPTIONS]
+   Usage: gtsh.py repository clean-up [OPTIONS]
    
      Clean up repository and reduce its disk size.
    

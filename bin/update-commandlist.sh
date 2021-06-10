@@ -27,7 +27,7 @@ title='GTSH Command Reference'
 
         echo -e '::\n'
         
-        python3 src/gtsh.py $cmd --help | while IFS='' read help_text; do
+        python3 src/gtshcli/gtsh.py $cmd --help | while IFS='' read help_text; do
             echo "   ${help_text}"
         done 
 

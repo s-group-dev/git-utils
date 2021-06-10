@@ -17,7 +17,7 @@ function print_help() {
   local cmd="${1}"
   shift
 
-  output="$(python3 src/gtsh.py ${cmd} --help)"
+  output="$(python3 src/gtshcli/gtsh.py ${cmd} --help)"
 
   local is_commands=0
   while read l; do
