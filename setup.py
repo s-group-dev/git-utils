@@ -3,7 +3,8 @@ from setuptools import find_packages, setup
 with open("README.rst") as f:
     readme = f.read()
 
-__version__ = "0.1.0"
+with open("src/version.yml") as f:
+    __version__ = f.read().split()[1]
 
 setup(
     name="gtsh",
