@@ -36,10 +36,11 @@ jobs:
 
       - name: Test with pytest
         run: |
-          pipenv run pytest tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=term
+          make test-cov-coverage
+
 
       - name: Coveralls
-        uses: AndreMiras/coveralls-python-action@develop
+        uses: AndreMiras/coveralls-python-action@v20201129
         with:
           parallel: true
           flag-name: Unit Test
@@ -49,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Coveralls Finished
-      uses: AndreMiras/coveralls-python-action@develop
+      uses: AndreMiras/coveralls-python-action@v20201129
       with:
         parallel-finished: true
 

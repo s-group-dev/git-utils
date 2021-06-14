@@ -49,4 +49,7 @@ test: ## Run tests
 test-cov: ## Run test coverage
 	pipenv run pytest --cov --cov-report term --cov-report html:./coverage --cov-fail-under=0
 
+test-cov-coverage: ## Run coverage for coverage.io
+	pipenv run pytest tests/ --cov=./src --cov-report xml --cov-report xml
+
 # vim: noexpandtab
