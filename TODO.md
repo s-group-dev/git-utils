@@ -6,5 +6,6 @@
   - Ask for confirmation$
 - Give branch name as parameter to branchservice:delete
 - Add test cov
-- Create wheel binary distribution
-- Use proper versioning in relases
+- release to pypi
+- move under sok
+- check test cov
