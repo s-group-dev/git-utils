@@ -9,7 +9,7 @@ Background
 **********
 
 Git Utils combines most of boring and sickening commands that you need to do
-with git. 
+with git IN shell.
 
 Definition
 ==========
