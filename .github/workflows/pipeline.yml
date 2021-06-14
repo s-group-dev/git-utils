@@ -1,0 +1,58 @@
+name: Bump Version
+on:
+  push:
+    paths-ignore:
+      - 'src/version.yml'
+      - 'CHANGELOG.md'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "📥 Checkout"
+        uses: actions/checkout@v2
+
+      # Setup Python (faster than using Python container)
+      - name: "🐍 Setup Python"
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "Install pipenv"
+        run: |
+          python -m pip install --upgrade pipenv wheel
+
+      - name: Install dependencies
+        run: |
+          pipenv install --dev .
+
+      - name: Lint with flake8
+        run: |
+          pipenv run rstcheck **/*.rst
+          pipenv run flake8 src/ tests/
+          pipenv run mypy src/ tests/
+
+      - name: Test with pytest
+        run: |
+          pipenv run pytest tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=term
+
+  bump-version:
+    name: "Conventional Changelog Action"
+    if: ${{ github.ref == 'ref/head/master' && success() }}
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "📥 Checkout"
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "🚀️ Bump version and push tag"
+        uses: TriPSs/conventional-changelog-action@v3.7.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          tag-prefix: ''
+          version-file: 'src/version.yml'
