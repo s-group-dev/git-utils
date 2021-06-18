@@ -43,6 +43,7 @@ jobs:
         with:
           parallel: true
           flag-name: Unit Test
+          debug: true
 
   coveralls_finish:
     needs: test
@@ -53,6 +54,7 @@ jobs:
       uses: AndreMiras/coveralls-python-action@v20201129
       with:
         parallel-finished: true
+        debug: true
 
   bump-version:
     name: "Conventional Changelog Action"
