@@ -1,3 +1,22 @@
+.. image:: https://github.com/tovrleaf/git-utils/actions/workflows/test.yml/badge.svg?branch=master
+   :alt: Run tests
+.. image:: https://img.shields.io/coveralls/github/tovrleaf/git-utils
+   :alt: Code coverage
+
+.. image:: https://img.shields.io/github/languages/count/tovrleaf/git-utils
+   :alt: GitHub language count
+.. image:: https://img.shields.io/github/languages/top/tovrleaf/git-utils
+   :alt: GitHub top language
+.. image:: https://img.shields.io/github/contributors/tovrleaf/git-utils
+   :alt: GitHub contributors
+
+.. image:: https://img.shields.io/pypi/dm/gtsh
+   :alt: PyPi downloads
+.. image:: https://img.shields.io/github/v/tag/tovrleaf/git-utils
+   :alt: Latest version
+.. image:: https://img.shields.io/badge/license-MIT-blue.svg
+   :alt: GitHub license
+
 #########################
 Git Utils, in short: gtsh
 #########################
