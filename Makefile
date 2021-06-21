@@ -15,7 +15,7 @@ clean: ## Remove all Python combile files
 build: ## Build distribution
 	python3 -m build
 
-build-local: ## Create local distribution 
+build-local: ## Create local distribution
 	python3 setup.py sdist
 
 format: ## Format code using isort and black
@@ -47,6 +47,7 @@ test: ## Run tests
 	pipenv run pytest
 
 test-cov: ## Run test coverage
-	pipenv run pytest --cov --cov-report term --cov-report html:./coverage --cov-fail-under=0
+	@rm -rf htmlcov/
+	pipenv run pytest --cov --cov-report term --cov-report html:./htmlcov --cov-fail-under=50
 
 # vim: noexpandtab
