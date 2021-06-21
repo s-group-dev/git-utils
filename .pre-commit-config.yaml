@@ -44,7 +44,7 @@ repos:
         name: pytest
         stages: [push]
         language: system
-        entry: pipenv run pytest --cov --cov-fail-under=0
+        entry: pipenv run pytest --cov --cov-fail-under=50
         types: [python]
         pass_filenames: false
 
@@ -53,4 +53,4 @@ repos:
         stages: [commit]
         language: python
         types: [rst]
-        entry: pipenv run rstcheck 
+        entry: pipenv run rstcheck

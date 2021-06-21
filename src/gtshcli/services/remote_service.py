@@ -1,10 +1,9 @@
 from gtshcli.services.subprocess_runner import SubprocessRunner
 
 
-class RemoteService(object):
+class RemoteService(SubprocessRunner):
     def subtree_merge(cls, url, branch, target_dir):
-        process = SubprocessRunner()
-        output = process.run("remote-merge-subtree", [url, branch, target_dir])
+        output = cls.run("remote-merge-subtree", [url, branch, target_dir])
         if output == "":
             return None
 

@@ -1,6 +1,5 @@
 [run]
 source = src
-relative_files = True
 
 [report]
 exclude_lines =
