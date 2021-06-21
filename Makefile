@@ -47,7 +47,6 @@ test: ## Run tests
 	pipenv run pytest
 
 test-cov: ## Run test coverage
-	pipenv run coverage html
-	@echo "Coverage report: $(shell grep "pc_cov" htmlcov/index.html | sed 's|^ *.*>\(.*\)<.*|\1|')"
+	pipenv run pytest --cov --cov-report term --cov-report html:./htmlcov --cov-fail-under=50
 
 # vim: noexpandtab
