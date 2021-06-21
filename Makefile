@@ -47,6 +47,7 @@ test: ## Run tests
 	pipenv run pytest
 
 test-cov: ## Run test coverage
+	@rm -rf htmlcov/
 	pipenv run pytest --cov --cov-report term --cov-report html:./htmlcov --cov-fail-under=50
 
 # vim: noexpandtab

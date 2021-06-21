@@ -9,7 +9,7 @@ def test_subtree_merge(mock_method):
 
 
 @patch.object(RemoteService, "run")
-def test_sybtree_merge_empty(mock_method):
+def test_subtree_merge_empty(mock_method):
     assert _test_subtree_merge(mock_method, "") is None
 
 
@@ -17,7 +17,9 @@ def _test_subtree_merge(mock_method, return_value):
     service = RemoteService()
 
     params = ["a", "b", "c"]
-    mock_method.return_value = return_value
+    ret = return_value
+
+    mock_method.return_value = ret
 
     result = service.subtree_merge(params[0], params[1], params[2])
 
