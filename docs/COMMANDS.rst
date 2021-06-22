@@ -8,7 +8,7 @@ $ gtsh branch list-merged
 
 ::
 
-   Usage: gtsh.py branch list-merged [OPTIONS]
+   Usage: gtsh branch list-merged [OPTIONS]
    
      List all other branches that are merged to given branch.
    
@@ -26,7 +26,7 @@ $ gtsh branch list-wip
 
 ::
 
-   Usage: gtsh.py branch list-wip [OPTIONS]
+   Usage: gtsh branch list-wip [OPTIONS]
    
      List all other branches that are NOT merged to given branch.
    
@@ -44,7 +44,7 @@ $ gtsh remote merge-subtree
 
 ::
 
-   Usage: gtsh.py remote merge-subtree [OPTIONS]
+   Usage: gtsh remote merge-subtree [OPTIONS]
    
      Merge given remote to local branch.
    
@@ -61,7 +61,7 @@ $ gtsh repository clean-up
 
 ::
 
-   Usage: gtsh.py repository clean-up [OPTIONS]
+   Usage: gtsh repository clean-up [OPTIONS]
    
      Clean up repository and reduce its disk size.
    

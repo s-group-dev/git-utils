@@ -28,7 +28,7 @@ title='GTSH Command Reference'
         echo -e '::\n'
         
         python3 src/gtshcli/gtsh.py $cmd --help | while IFS='' read help_text; do
-            echo "   ${help_text}"
+            echo "   ${help_text}" | sed 's|Usage: gtsh.py|Usage: gtsh|'
         done 
 
         echo
